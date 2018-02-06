@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <center>
+      <h1>EX2 - Search String Non Sensitive Case</h1>
+      <hr width = "Full"><p>
+      Text Input: <textarea rows="4" cols="50" id="textin1" >
+      tests</textarea><br><br>
+      Sensitive Case:<input type="radio" name="check" value="1" >Yes
+      <input type="radio" name="check" value="2">No<br><br>
+      Search: <input type="text" id="textin2"><br><br>
+      <button type="button" onclick="Search()">Search</button><br><br>
+      Result for Search: <span id="result"><span>
+    </center>
+</body>
+</html>
+      <script>
+      function Search(){
+        var textin1 = document.getElementById('textin1').value;
+        var textin2 = document.getElementById('textin2').value;
+        var radio = document.querySelector('input[name="check"]:checked').value;
+        if(radio==1){
+          if(textin2==""||textin1==""){
+            document.getElementById('result').innerHTML = "No input";
+          }
+          else{
+            var re = new RegExp(textin2, 'g');
+            var count = textin1.match(re);
+            if(count==null){
+              document.getElementById('result').innerHTML = "0";
+            }
+            else{
+              document.getElementById('result').innerHTML = textin1.match(re).length;;
+            }
+          }
+        }
+        else if(radio==2){
+          if(textin2==""||textin1==""){
+            document.getElementById('result').innerHTML = "No input";
+          }
+          else{
+            var re = new RegExp(textin2, 'gi');
+            var count = textin1.match(re);
+            if(count==null){
+              document.getElementById('result').innerHTML = "0";
+            }
+            else{
+
+              document.getElementById('result').innerHTML = textin1.match(re).length;;
+            }
+          }
+        }
+      }
+      </script>
